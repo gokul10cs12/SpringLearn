@@ -19,6 +19,12 @@ public class UserService {
     }
 
     public User findUserByName(String name) {
-        return repository.findByName(name);
+        String location = "blr";
+        return repository.findByName(name,location);
+    }
+
+    public User updateUser(User user) {
+
+        return repository.updateUser(user);
     }
 }

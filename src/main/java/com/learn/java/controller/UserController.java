@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping()
-    User getUserbyCriteria(@RequestParam(name = "criteria") String criteria) {
+    User getUserbyCriteria(@RequestParam(name = "name") String criteria) {
         return  userService.findUserByName(criteria);
     }
 
@@ -29,6 +29,10 @@ public class UserController {
         return userService.findUserByName(name);
     }
 
+    @PutMapping
+    User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
 
-    //path variable requestparam
+
 }
