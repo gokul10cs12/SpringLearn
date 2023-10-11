@@ -1,5 +1,6 @@
 package com.learn.java.controller;
 
+import com.learn.java.Exception.UserNotFoundException;
 import com.learn.java.model.User;
 import com.learn.java.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,10 @@ public class UserController {
 
     @GetMapping("/{name}")
     User getUserbyName(@PathVariable String name) {
+        User user = userService.findUserByName(name);
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        }
         return userService.findUserByName(name);
     }
 
@@ -33,6 +38,5 @@ public class UserController {
     User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
-
 
 }
